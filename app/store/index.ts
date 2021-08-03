@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 import { reducer } from './reducer';
+import persistStore from 'redux-persist/es/persistStore';
 
 const middlewares = [];
 
@@ -18,5 +19,7 @@ middlewares.push(logger);
 console.log('[REDUX] Redux logger added!');
 
 const enhancer = composeEnhancers(applyMiddleware(...middlewares));
-const store = createStore(reducer, {}, enhancer);
-export { store };
+const store = createStore(reducer, undefined, enhancer);
+const persistor = persistStore(store);
+
+export { store, persistor };
