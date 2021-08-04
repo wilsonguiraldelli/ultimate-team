@@ -1,10 +1,22 @@
 import React from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
-function ListScreen(): React.ReactElement {
+import { Header } from 'common/components';
+import { getStyles } from './styles';
+
+import { Props } from './types';
+
+function ListScreen(props: Props): React.ReactElement {
+
+  const styles = getStyles();
+
   return (
-    <SafeAreaView>
-      <Text>List Screen</Text>
+    <SafeAreaView style={styles.container}>
+      <Header
+        rightIcon="add"
+        onPressRightIcon={props.onAdd}
+        title="Jogadores"
+      />
     </SafeAreaView>
   );
 }

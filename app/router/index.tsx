@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { StatusBar } from 'react-native';
+import { StatusBar, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { useTheme } from 'native-base';
@@ -10,7 +10,11 @@ import * as Navigator from 'services/navigator';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { ListContainer as PlayersListContainer } from 'players/containers';
+import {
+  ListContainer as PlayersListContainer,
+  AddContainer as PlayersAddContainer,
+} from 'players/containers';
+
 import { ListContainer as GamesListContainer } from 'games/containers';
 
 const Stack = createStackNavigator();
@@ -19,6 +23,18 @@ const Tabl = createBottomTabNavigator();
 const PlayerStack = () => (
   <Stack.Navigator initialRouteName="players-list" headerMode="none">
     <Stack.Screen name="players-list" component={PlayersListContainer} />
+    <Stack.Screen
+      name="players-add"
+      component={PlayersAddContainer}
+      options={Platform.OS === 'ios'
+        ? {
+          gestureEnabled: true,
+          gestureDirection: 'vertical',
+          cardStyleInterpolator: CardStyleInterpolators
+            .forModalPresentationIOS,
+        }
+        : {}}
+    />
   </Stack.Navigator>
 );
 
@@ -28,12 +44,14 @@ const GamesStack = () => (
   </Stack.Navigator>
 );
 
+const getCurrentRoute = ({ routes }: any) => {
+  // Getting when open page is players-add to not show tab bar
+  return routes?.[0]?.state?.index;
+};
 
 const Router: React.FC = () => {
 
   const { colors } = useTheme();
-
-  console.log('COLORS', colors);
 
   return (
     <React.Fragment>
@@ -47,7 +65,7 @@ const Router: React.FC = () => {
       >
         <Tabl.Navigator
           initialRouteName="player"
-          screenOptions={({ route }) => ({
+          screenOptions={({ route, navigation }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let icon;
 
@@ -63,6 +81,7 @@ const Router: React.FC = () => {
 
               return <Ionicons name={icon} size={size} color={color} />;
             },
+            tabBarVisible: !getCurrentRoute(navigation.dangerouslyGetState()),
           })}
           tabBarOptions={{
             activeTintColor: colors.primary[500],
