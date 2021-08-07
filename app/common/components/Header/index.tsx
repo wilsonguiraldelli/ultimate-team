@@ -10,7 +10,7 @@ function Header(props: Props) {
     const styles = getStyles();
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <Row style={styles.row}>
                 <Row style={styles.titleRow}>
                     <IconButton

@@ -3,6 +3,7 @@ import { extendTheme, theme } from 'native-base';
 export default extendTheme({
     colors: {
         primary: theme.colors.green,
+        error: theme.colors.rose,
     },
     fontConfig: {
         Roboto: {

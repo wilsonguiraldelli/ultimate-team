@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export function getStyles(_theme?: any) {
     return StyleSheet.create({
+        container : {
+            marginBottom: 16,
+        },
+
         row: {
             padding: 16,
             justifyContent: 'space-between',
