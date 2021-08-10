@@ -1,3 +1,11 @@
+
+export type Player = {
+    name: string
+    nickname: string
+    position: string
+    payment: string
+}
+
 export const Position = [
     {label: 'N/A', value: 'N/A'},
     {label: 'GOL', value: 'GOL'},

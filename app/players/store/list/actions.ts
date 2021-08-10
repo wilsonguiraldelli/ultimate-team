@@ -1,3 +1,4 @@
 import { createAction } from 'typesafe-actions';
+import {Player} from 'players/types';
 
-export const get = createAction('PLAYERS/LIST/GET')<Number>();
+export const add = createAction('PLAYERS/LIST/ADD')<Player>();

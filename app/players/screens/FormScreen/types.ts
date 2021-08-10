@@ -1,17 +1,13 @@
+import { Player } from 'players/types';
 import * as Yup from 'yup';
 
 export type Props = {
     onGoBack: () => void,
+    initialValues: Player,
+    onSubmit: (player: Player) => void,
 }
 
-export type Form = {
-    name: string
-    nickname: string
-    position: string
-    payment: string
-}
-
-export const validationSchema: Yup.SchemaOf<Form> = Yup.object().shape({
+export const validationSchema: Yup.SchemaOf<Player> = Yup.object().shape({
     name: Yup.string()
         .required('Por favor, informe o nome do jogador')
         .trim()
