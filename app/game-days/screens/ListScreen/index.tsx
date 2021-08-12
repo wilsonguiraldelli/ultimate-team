@@ -1,7 +1,8 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
 
 import { Header, DateTimePicker } from 'common/components';
+import { DayCard } from 'game-days/components';
 import { getStyles } from './styles';
 
 import { Props } from './types';
@@ -22,6 +23,16 @@ function ListScreen(props: Props): React.ReactElement {
         isOpen={props.isDatePickerOpen}
         onClose={() => props.handleDatePicker(false)}
         onSubmit={props.onSubmit}
+      />
+
+      <FlatList
+        data={props.days}
+        keyExtractor={({ id }) => `${id}`}
+        renderItem={({ item }) => (
+          <DayCard
+            date={item.date}
+          />
+        )}
       />
     </SafeAreaView>
   );

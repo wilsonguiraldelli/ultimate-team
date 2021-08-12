@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import * as Navigator from 'services/navigator';
 
-import { ListContainer as GamesDayListContainer } from 'game-day/containers';
+import { ListContainer as GamesDayListContainer } from 'game-days/containers';
 import { TabsStack } from './stacks/tabs';
 
 const Stack = createStackNavigator();
