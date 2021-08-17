@@ -11,9 +11,14 @@ function ListContainer(): React.ReactElement {
     navigation.navigate('players-add');
   };
 
+  const handleGoBack = () => {
+    navigation.goBack()
+  }
+
   return (
     <ListScreen
       onAdd={handleAdd}
+      onGoBack={handleGoBack}
     />
   );
 }

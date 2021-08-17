@@ -1,4 +1,4 @@
-export type GameDay = {
+export type SaturdayProps = {
     id: string | number[]
     date: string
 }

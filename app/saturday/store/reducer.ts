@@ -1,24 +1,26 @@
-import { GameDay } from 'game-days/types';
+import { SaturdayProps } from 'saturday/types';
 import { createReducer } from 'typesafe-actions';
 
 import * as actions from './actions';
 
 type State = Readonly<{
-  isLoading: boolean,
-  days: GameDay[],
-  current: GameDay | undefined | null,
+  data: SaturdayProps[],
+  current: SaturdayProps | undefined | null,
 }>;
 
 const INITIAL_STATE: State = {
-  isLoading: false,
-  days: [],
+  data: [],
   current: undefined,
 };
 
 const reducer: any = createReducer(INITIAL_STATE)
   .handleAction(actions.create, (state: State, { payload }: any) => ({
     ...state,
-    days: [payload, ...state.days],
+    data: [payload, ...state.data],
+    current: payload,
+  }))
+  .handleAction(actions.select, (state: State, { payload }: any) => ({
+    ...state,
     current: payload,
   }))
 

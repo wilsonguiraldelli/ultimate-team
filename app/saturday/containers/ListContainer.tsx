@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { ListScreen } from 'game-days/screens';
+import { ListScreen } from 'saturday/screens';
 
 import { useNavigation } from '@react-navigation/native';
 import { DateTime } from "luxon";
 
-import { list } from 'game-days/store/actions';
+import * as actions from 'saturday/store/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { GameDay } from 'game-days/types';
+import { SaturdayProps } from 'saturday/types';
 
 import { Toast } from 'common/components';
 import { useToast } from 'native-base';
@@ -16,11 +16,11 @@ import uuid from 'react-native-uuid';
 function ListContainer(): React.ReactElement {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-const toast = useToast();
+  const toast = useToast();
 
   const [isDatePickerOpen, setIsDatePickerOpen] = useState<boolean>(false);
 
-  const gameDays = useSelector<any, GameDay[]>(({ gameDays }) => gameDays.list.days);
+  const saturdays = useSelector<any, SaturdayProps[]>(({ saturday }) => saturday.data);
 
   const handleDatePicker = (value: boolean) => {
     setIsDatePickerOpen(value);
@@ -29,18 +29,17 @@ const toast = useToast();
   const handleSubmit = (date: Date) => {
     const luxonDate = DateTime.fromJSDate(date);
     const formatedDate = luxonDate.toLocaleString()
-    console.log('DIAS', gameDays);
 
-    if (gameDays.some(gameDay => gameDay.date === formatedDate)) {
-    handleDatePicker(false);
-    return toast.show({
+    if (saturdays.some(saturday => saturday.date === formatedDate)) {
+      handleDatePicker(false);
+      return toast.show({
         render: () => <Toast type="error" message="Esse dia já foi criado" />
       })
     }
 
     const id = uuid.v4();
 
-    dispatch(list.create({
+    dispatch(actions.create({
       id: id,
       date: formatedDate,
     }))
@@ -49,12 +48,29 @@ const toast = useToast();
     handleDatePicker(false);
   }
 
+  const handleSelect = (saturday: SaturdayProps) => {
+    dispatch(actions.select(saturday));
+    navigation.navigate('Tabs', { screen: 'players-list' });
+  }
+
+
+  const handleEdit = () => {
+    console.log('Edit');
+  }
+
+  const handleDelete = () => {
+    console.log('Delete');
+  }
+
   return (
     <ListScreen
       onSubmit={handleSubmit}
+      onSelect={handleSelect}
+      onEdit={handleEdit}
+      onDelete={handleDelete}
       handleDatePicker={handleDatePicker}
       isDatePickerOpen={isDatePickerOpen}
-      days={gameDays}
+      days={saturdays}
     />
   );
 

@@ -16,6 +16,8 @@ function ListScreen(props: Props): React.ReactElement {
         rightIcon="add"
         onPressRightIcon={props.onAdd}
         title="Jogadores"
+        leftIcon="arrow-back"
+        onPressLeftIcon={props.onGoBack}
       />
     </SafeAreaView>
   );

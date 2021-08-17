@@ -6,15 +6,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import * as Navigator from 'services/navigator';
 
-import { ListContainer as GamesDayListContainer } from 'game-days/containers';
+import { ListContainer as SaturdayListContainer } from 'saturday/containers';
 import { TabsStack } from './stacks/tabs';
 
 const Stack = createStackNavigator();
 
 
-const GameDayStack = () => (
-  <Stack.Navigator initialRouteName="game-day-list" headerMode="none">
-    <Stack.Screen name="game-day-list" component={GamesDayListContainer} />
+const SaturdayStack = () => (
+  <Stack.Navigator initialRouteName="saturday-list" headerMode="none">
+    <Stack.Screen name="saturday-list" component={SaturdayListContainer} />
   </Stack.Navigator>
 )
 
@@ -30,7 +30,7 @@ const Router: React.FC = () => {
         }}
       >
         <Stack.Navigator initialRouteName="Home" headerMode="none">
-          <Stack.Screen name="Home" component={GameDayStack} />
+          <Stack.Screen name="Home" component={SaturdayStack} />
           <Stack.Screen name="Tabs" component={TabsStack} />
         </Stack.Navigator>
       </NavigationContainer>

@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 
 import { Header, DateTimePicker } from 'common/components';
-import { DayCard } from 'game-days/components';
+import { DayCard } from 'saturday/components';
 import { getStyles } from './styles';
 
 import { Props } from './types';
@@ -16,7 +16,7 @@ function ListScreen(props: Props): React.ReactElement {
       <Header
         rightIcon="add"
         onPressRightIcon={() => props.handleDatePicker(true)}
-        title="Dia de jogo"
+        title="Sábado"
       />
       <DateTimePicker
         placeholder="Selecine o dia de jogo"
@@ -31,6 +31,9 @@ function ListScreen(props: Props): React.ReactElement {
         renderItem={({ item }) => (
           <DayCard
             date={item.date}
+            onSelect={() => props.onSelect(item)}
+            onEdit={() => props.onEdit()}
+            onDelete={() => props.onDelete()}
           />
         )}
       />
