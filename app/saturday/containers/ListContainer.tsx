@@ -33,7 +33,7 @@ function ListContainer(): React.ReactElement {
     if (saturdays.some(saturday => saturday.date === formatedDate)) {
       handleDatePicker(false);
       return toast.show({
-        render: () => <Toast type="error" message="Esse dia já foi criado" />
+        render: () => <Toast type="error" message="Já jogaram nesse dia, fominha..." />
       })
     }
 
@@ -53,20 +53,16 @@ function ListContainer(): React.ReactElement {
     navigation.navigate('Tabs', { screen: 'players-list' });
   }
 
+  const handleDelete = (id: string | number[]) => {
+    const filteredSaturdays = saturdays.filter(saturday => saturday.id !== id);
 
-  const handleEdit = () => {
-    console.log('Edit');
-  }
-
-  const handleDelete = () => {
-    console.log('Delete');
+    dispatch(actions.update(filteredSaturdays));
   }
 
   return (
     <ListScreen
       onSubmit={handleSubmit}
       onSelect={handleSelect}
-      onEdit={handleEdit}
       onDelete={handleDelete}
       handleDatePicker={handleDatePicker}
       isDatePickerOpen={isDatePickerOpen}

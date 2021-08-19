@@ -23,6 +23,7 @@ function ListScreen(props: Props): React.ReactElement {
         isOpen={props.isDatePickerOpen}
         onClose={() => props.handleDatePicker(false)}
         onSubmit={props.onSubmit}
+        minimumDate={new Date()}
       />
 
       <FlatList
@@ -32,8 +33,7 @@ function ListScreen(props: Props): React.ReactElement {
           <DayCard
             date={item.date}
             onSelect={() => props.onSelect(item)}
-            onEdit={() => props.onEdit()}
-            onDelete={() => props.onDelete()}
+            onDelete={() => props.onDelete(item.id)}
           />
         )}
       />

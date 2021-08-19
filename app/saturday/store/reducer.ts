@@ -19,6 +19,10 @@ const reducer: any = createReducer(INITIAL_STATE)
     data: [payload, ...state.data],
     current: payload,
   }))
+  .handleAction(actions.update, (state: State, { payload }: any) => ({
+    ...state,
+    data: payload,
+  }))
   .handleAction(actions.select, (state: State, { payload }: any) => ({
     ...state,
     current: payload,

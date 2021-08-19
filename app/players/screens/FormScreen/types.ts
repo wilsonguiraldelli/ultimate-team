@@ -5,6 +5,7 @@ export type Props = {
     onGoBack: () => void,
     initialValues: Player,
     onSubmit: (player: Player) => void,
+    playersListSize: number,
 }
 
 export const validationSchema: Yup.SchemaOf<Player> = Yup.object().shape({
@@ -16,7 +17,6 @@ export const validationSchema: Yup.SchemaOf<Player> = Yup.object().shape({
         .trim()
         .max(255, 'Numero maximo de 255 caracteres atingido'),
     position: Yup.string()
-        .required('Por favor, informe a posição em que o jogador atua')
         .trim(),
     payment: Yup.string()
         .required('Selecione o metodo de pagamento')

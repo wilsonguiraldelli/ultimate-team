@@ -7,19 +7,13 @@ export function getStyles(_theme?: any) {
       backgroundColor: '#FFF',
     },
 
-    editContainer: {
-      width: 70,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: theme.colors.gray[400],
-      borderTopLeftRadius: 6,
-    },
-
     deleteContainer: {
       width: 70,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: theme.colors.red[700],
+      paddingLeft: 4,
+      borderTopLeftRadius: 3,
     }
   });
 }

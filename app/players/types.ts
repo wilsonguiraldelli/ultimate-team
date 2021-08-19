@@ -1,9 +1,11 @@
 
 export type Player = {
+    order: number
     name: string
     nickname: string
     position: string
     payment: string
+    phone: string
 }
 
 export const Position = [

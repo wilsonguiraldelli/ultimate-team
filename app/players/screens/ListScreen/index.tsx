@@ -5,6 +5,7 @@ import { Header } from 'common/components';
 import { getStyles } from './styles';
 
 import { Props } from './types';
+import { Row, Text, View } from 'native-base';
 
 function ListScreen(props: Props): React.ReactElement {
 
@@ -16,6 +17,7 @@ function ListScreen(props: Props): React.ReactElement {
         rightIcon="add"
         onPressRightIcon={props.onAdd}
         title="Jogadores"
+        subtitle={props.current.date}
         leftIcon="arrow-back"
         onPressLeftIcon={props.onGoBack}
       />

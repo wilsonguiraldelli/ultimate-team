@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import { Text, Row, IconButton, View } from 'native-base';
+import { Text, Row, IconButton, View, Column } from 'native-base';
 
 import { getStyles } from './styles';
 import { Props } from './types';
@@ -23,7 +23,10 @@ function Header(props: Props) {
                         }
                         onPress={() => props.onPressLeftIcon ? props.onPressLeftIcon() : {}}
                     />
-                    <Text bold fontSize="2xl">{props.title}</Text>
+                    <Column>
+                        <Text bold fontSize="2xl">{props.title}</Text>
+                        <Text fontSize="sm">{props.subtitle}</Text>
+                    </Column>
                 </Row>
                 <IconButton
                     style={styles.rightIcon}

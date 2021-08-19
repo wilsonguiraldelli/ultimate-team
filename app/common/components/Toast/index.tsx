@@ -49,7 +49,7 @@ function Toast(props: Props): ReactElement {
             >
                 <Row style={styles.row}>
                     <Text color="#FFF">{props.message}</Text>
-                    <Icon color="#FFF" name="close" size={32} />
+                    <Icon color="#FFF" name="warning-outline" size={32} />
                 </Row>
             </Box>
         )

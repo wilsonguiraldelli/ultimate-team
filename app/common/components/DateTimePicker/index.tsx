@@ -48,6 +48,7 @@ function DateTimePicker(props: Props): React.ReactElement {
                         display="spinner"
                         textColor="#000"
                         onChange={(_event: any, selectedDate: any) => setDate(selectedDate)}
+                        minimumDate={props.minimumDate}
                     />
                 </Column>
             </Modal.Content>

@@ -3,4 +3,5 @@ export type Props = {
     isOpen: boolean,
     onClose: () => void,
     onSubmit: (date: Date) => void,
+    minimumDate?: Date | undefined,
 }

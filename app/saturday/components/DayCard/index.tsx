@@ -19,9 +19,6 @@ function DayCard(props: Props): React.ReactElement {
 
 	const renderOptions = () => (
 		<Row>
-			<Pressable style={styles.editContainer} onPress={props.onEdit}>
-				<MaterialIcon name="edit" size={32} color='#FFF' />
-			</Pressable>
 			<Pressable style={styles.deleteContainer}>
 				<MaterialIcon name="delete" size={32} color='#FFF' onPress={props.onDelete} />
 			</Pressable>

@@ -1,5 +1,6 @@
 export type Props = {
-    title: String,
+    title: string,
+    subtitle?: string,
     rightIcon?: string,
     leftIcon?: string,
     onPressRightIcon?: (param?: any) => any,
