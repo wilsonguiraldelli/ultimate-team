@@ -16,16 +16,36 @@ const INITIAL_STATE: State = {
 const reducer: any = createReducer(INITIAL_STATE)
   .handleAction(actions.create, (state: State, { payload }: any) => ({
     ...state,
-    data: [payload, ...state.data],
-    current: payload,
+    data: [{
+      ...payload,
+      players: [],
+    },
+    ...state.data],
+    current: payload.id,
   }))
+
   .handleAction(actions.update, (state: State, { payload }: any) => ({
     ...state,
     data: payload,
   }))
+
   .handleAction(actions.select, (state: State, { payload }: any) => ({
     ...state,
     current: payload,
+  }))
+
+  .handleAction(actions.addPlayer, (state: State, { payload }: any) => ({
+    ...state,
+    data: state.data.map(saturday => {
+      if (saturday.id === payload.saturday_id) {
+        return ({
+          ...saturday,
+          players: payload.players,
+        })
+      }
+
+      return saturday;
+    })
   }))
 
 export { reducer };

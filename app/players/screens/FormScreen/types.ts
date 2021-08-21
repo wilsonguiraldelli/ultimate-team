@@ -9,11 +9,8 @@ export type Props = {
 }
 
 export const validationSchema: Yup.SchemaOf<Player> = Yup.object().shape({
-    name: Yup.string()
+    name_nickename: Yup.string()
         .required('Por favor, informe o nome do jogador')
-        .trim()
-        .max(255, 'Numero maximo de 255 caracteres atingido'),
-    nickname: Yup.string()
         .trim()
         .max(255, 'Numero maximo de 255 caracteres atingido'),
     position: Yup.string()

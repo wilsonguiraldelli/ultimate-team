@@ -1,8 +1,7 @@
 
 export type Player = {
-    order: number
-    name: string
-    nickname: string
+    order: number | string
+    name_nickename: string
     position: string
     payment: string
     phone: string

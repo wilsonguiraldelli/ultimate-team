@@ -17,10 +17,8 @@ function FormScreen(props: Props) {
     .range(1, props.playersListSize + 1)
     .map(item => ({
       label: String(item),
-      value: item
+      value: String(item)
     }))
-
-    console.log('ORDER LIST', orderList);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -47,22 +45,13 @@ function FormScreen(props: Props) {
                   onBlur={() => formik.setFieldTouched('order')}
                 />
                 <Field
-                  label="Nome e sobrenome"
-                  placeholder="Nome da fera"
-                  onChange={formik.handleChange('name') as any}
-                  onBlur={formik.handleBlur('name')}
-                  value={formik.values.name}
-                  autoCapitalize="words"
-                  error={formik.touched?.name && formik.errors?.name}
-                />
-                <Field
-                  label="Apelido"
+                  label="Nome / Apelido"
                   placeholder="Mais conhecido como..."
-                  onChange={formik.handleChange('nickname') as any}
-                  onBlur={formik.handleBlur('nickname')}
-                  value={formik.values.nickname}
+                  onChange={formik.handleChange('name_nickename') as any}
+                  onBlur={formik.handleBlur('name_nickename')}
+                  value={formik.values.name_nickename}
                   autoCapitalize="words"
-                  error={formik.touched?.nickname && formik.errors?.nickname}
+                  error={formik.touched?.name_nickename && formik.errors?.name_nickename}
                 />
                 <Field
                   label="Celular"

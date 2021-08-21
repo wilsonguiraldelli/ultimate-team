@@ -49,7 +49,7 @@ function ListContainer(): React.ReactElement {
   }
 
   const handleSelect = (saturday: SaturdayProps) => {
-    dispatch(actions.select(saturday));
+    dispatch(actions.select(saturday.id));
     navigation.navigate('Tabs', { screen: 'players-list' });
   }
 

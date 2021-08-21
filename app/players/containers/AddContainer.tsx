@@ -6,39 +6,43 @@ import { useNavigation } from '@react-navigation/native';
 import { Player } from 'players/types';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { list } from 'players/store/actions';
+import { addPlayer } from 'saturday/store/actions';
 import { SaturdayProps } from 'saturday/types';
+import { selectCurrentSaturday } from 'saturday/hooks';
 
 function AddContainer() {
-    const navigation = useNavigation();
-    const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const current = useSelector<any, SaturdayProps>(({ saturday }) => saturday.current);
-  console.log('Current', current);
+  const current = selectCurrentSaturday();
 
-    const handleGoBack = () => {
-        navigation.goBack();
-    };
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
 
-    const handleSubmit = (player: Player) => {
-        dispatch(list.add(player));
-    };
+  const handleSubmit = (player: Player) => {
+    const players = current.players;
+    players.splice(Number(player.order) - 1, 0, player)
 
-    return (
-        <FormScreen
-            onGoBack={handleGoBack}
-            onSubmit={handleSubmit}
-            playersListSize={current?.players?.length || 1}
-            initialValues={{
-                order: current?.players?.length || 1,
-                name: '',
-                nickname: '',
-                position: '',
-                payment: 'N/P',
-                phone: '',
-            }}
-        />
-    );
+    dispatch(addPlayer({ saturday_id: current.id, players }))
+
+    handleGoBack();
+  };
+
+  return (
+    <FormScreen
+      onGoBack={handleGoBack}
+      onSubmit={handleSubmit}
+      playersListSize={current?.players?.length ? current?.players?.length  + 1 : 1}
+      initialValues={{
+        order: current?.players?.length ? String(current?.players?.length  + 1) : '1',
+        name_nickename: '',
+        position: '',
+        payment: 'N/P',
+        phone: '',
+      }}
+    />
+  );
 }
 
 export default AddContainer;

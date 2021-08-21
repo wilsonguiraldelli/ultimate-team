@@ -10,6 +10,6 @@ export type Props = {
 };
 
 type option = {
-    label: string | number,
+    label: string | undefined,
     value: string | number,
 };
