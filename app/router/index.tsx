@@ -30,7 +30,13 @@ const Router: React.FC = () => {
         }}
       >
         <Stack.Navigator initialRouteName="Home" headerMode="none">
-          <Stack.Screen name="Home" component={SaturdayStack} />
+          <Stack.Screen
+            name="Home"
+            component={SaturdayStack}
+            options={{
+              gestureDirection: 'horizontal-inverted'
+            }}
+          />
           <Stack.Screen name="Tabs" component={TabsStack} />
         </Stack.Navigator>
       </NavigationContainer>

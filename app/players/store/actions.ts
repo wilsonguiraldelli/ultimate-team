@@ -1,5 +1,5 @@
-import * as list from './list/actions';
+import * as form from './form/actions';
 
 export {
-  list,
+  form,
 };

@@ -34,7 +34,7 @@ const reducer: any = createReducer(INITIAL_STATE)
     current: payload,
   }))
 
-  .handleAction(actions.addPlayer, (state: State, { payload }: any) => ({
+  .handleAction(actions.updatePlayers, (state: State, { payload }: any) => ({
     ...state,
     data: state.data.map(saturday => {
       if (saturday.id === payload.saturday_id) {

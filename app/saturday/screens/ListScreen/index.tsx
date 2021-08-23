@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 
 import { Header, DateTimePicker } from 'common/components';
-import { DayCard } from 'saturday/components';
+import { SaturdayCard } from 'saturday/components';
 import { getStyles } from './styles';
 
 import { Props } from './types';
@@ -30,8 +30,8 @@ function ListScreen(props: Props): React.ReactElement {
         data={props.days}
         keyExtractor={({ id }) => `${id}`}
         renderItem={({ item }) => (
-          <DayCard
-            date={item.date}
+          <SaturdayCard
+            saturday={item}
             onSelect={() => props.onSelect(item)}
             onDelete={() => props.onDelete(item.id)}
           />

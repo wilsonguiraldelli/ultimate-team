@@ -3,11 +3,11 @@ import React from 'react';
 import { FormScreen } from 'players/screens';
 
 import { useNavigation } from '@react-navigation/native';
-import { Player } from 'players/types';
-import { useDispatch, useSelector } from 'react-redux';
+import { PlayerForm, PlayerProps } from 'players/types';
+import { useDispatch } from 'react-redux';
+import uuid from 'react-native-uuid';
 
-import { addPlayer } from 'saturday/store/actions';
-import { SaturdayProps } from 'saturday/types';
+import { updatePlayers } from 'saturday/store/actions';
 import { selectCurrentSaturday } from 'saturday/hooks';
 
 function AddContainer() {
@@ -20,11 +20,13 @@ function AddContainer() {
     navigation.goBack();
   };
 
-  const handleSubmit = (player: Player) => {
+  const handleSubmit = (player: PlayerForm) => {
     const players = current.players;
-    players.splice(Number(player.order) - 1, 0, player)
+    const id = uuid.v4();
 
-    dispatch(addPlayer({ saturday_id: current.id, players }))
+    players.splice(Number(player.order) - 1, 0, {...player, id})
+
+    dispatch(updatePlayers({ saturday_id: current.id, players }))
 
     handleGoBack();
   };

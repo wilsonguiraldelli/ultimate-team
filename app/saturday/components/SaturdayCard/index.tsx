@@ -1,7 +1,7 @@
-import { Row, Column, Text, theme, Menu, Container, Tooltip } from "native-base";
-import React, { Fragment } from "react";
-import { Pressable, Animated } from "react-native";
-import { Swipeable, RectButton } from "react-native-gesture-handler";
+import { Row, Column, Text, theme } from "native-base";
+import React from "react";
+import { Pressable } from "react-native";
+import { Swipeable } from "react-native-gesture-handler";
 
 import { DateTime } from 'luxon';
 import IonIcon from 'react-native-vector-icons/Ionicons';
@@ -10,11 +10,11 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Props } from "./types";
 import { getStyles } from './styles';
 
-function DayCard(props: Props): React.ReactElement {
+function SaturdayCard(props: Props): React.ReactElement {
 	const styles = getStyles();
 
 	const today = DateTime.now().toLocaleString();
-	const isPlaying = props.date === today;
+	const isPlaying = props.saturday.date === today;
 
 
 	const renderOptions = () => (
@@ -43,7 +43,8 @@ function DayCard(props: Props): React.ReactElement {
 					justifyContent="space-between"
 				>
 					<Column space={1}>
-						<Text fontSize={22}>{props.date}</Text>
+						<Text fontSize={22}>{props.saturday.date}</Text>
+						<Text fontSize={16}>{`${props.saturday.players.length} Jogadores`}</Text>
 					</Column>
 					<IonIcon
 						name={isPlaying
@@ -51,7 +52,7 @@ function DayCard(props: Props): React.ReactElement {
 							: "flag"
 						}
 						color={isPlaying
-							? theme.colors.black
+							? theme.colors.green[300]
 							: theme.colors.gray[300]
 						}
 						size={32} />
@@ -60,4 +61,4 @@ function DayCard(props: Props): React.ReactElement {
 		</Swipeable>
 	)
 }
-export default DayCard;
+export default SaturdayCard;

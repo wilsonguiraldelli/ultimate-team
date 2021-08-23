@@ -1,6 +1,7 @@
+import { SaturdayProps } from "saturday/types";
+
 export type Props = {
-    date: string,
-    players?: string | number,
+    saturday: SaturdayProps,
     onSelect: () => void,
     onDelete: () => void,
     

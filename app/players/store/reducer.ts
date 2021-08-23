@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { reducer as list } from './list/reducer';
+import { reducer as form } from './form/reducer';
 
 const reducer = combineReducers({
-  list,
+  form,
 });
 
 export { reducer };

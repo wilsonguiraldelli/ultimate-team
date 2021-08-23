@@ -4,10 +4,10 @@ import { SafeAreaView, ScrollView } from 'react-native';
 import { Header, Field, Dropdown } from 'common/components';
 import { Formik, FormikProps } from 'formik';
 
-import { Props, validationSchema } from './types';
+import { FormProps, Props, validationSchema } from './types';
 import { getStyles } from './styles';
 import { Button, Column } from 'native-base';
-import { PaymentMethods, Player, Position } from 'players/types';
+import { PaymentMethods, Position } from 'players/types';
 import * as ramda from 'ramda';
 
 function FormScreen(props: Props) {
@@ -33,7 +33,7 @@ function FormScreen(props: Props) {
           validationSchema={validationSchema}
           onSubmit={(values) => props.onSubmit(values)}
         >
-          {(formik: FormikProps<Player>) => (
+          {(formik: FormikProps<FormProps>) => (
             <Column flex={1} justifyContent="space-between">
               <Column space={4}>
                 <Dropdown
