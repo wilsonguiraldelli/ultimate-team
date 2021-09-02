@@ -5,6 +5,7 @@ import { Text, Row, IconButton, View, Column } from 'native-base';
 import { getStyles } from './styles';
 import { Props } from './types';
 import Icon from 'react-native-vector-icons/Ionicons';
+import If from '../If';
 
 function Header(props: Props) {
   const styles = getStyles();
@@ -25,7 +26,9 @@ function Header(props: Props) {
           />
           <Column>
             <Text bold fontSize="2xl">{props.title}</Text>
-            <Text fontSize="sm">{props.subtitle}</Text>
+            <If condition={!!props.subtitle}>
+              <Text fontSize="sm">{props.subtitle}</Text>
+            </If>
           </Column>
         </Row>
         <IconButton

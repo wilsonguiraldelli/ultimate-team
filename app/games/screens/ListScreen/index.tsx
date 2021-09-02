@@ -4,8 +4,10 @@ import { Header } from 'common/components';
 
 import { Props } from './types';
 import { getStyles } from './styles';
+import { Center } from 'native-base';
+import { FormTeamsButton } from 'games/components';
 
-function ListScreen(_props: Props): React.ReactElement {
+function ListScreen(props: Props): React.ReactElement {
   const styles = getStyles();
 
   return (
@@ -13,6 +15,11 @@ function ListScreen(_props: Props): React.ReactElement {
       <Header
         title="Jogos"
       />
+      <Center flex={1}>
+        <FormTeamsButton
+          onPress={props.onFormTeam}
+        />
+      </Center>
     </SafeAreaView>
   );
 }

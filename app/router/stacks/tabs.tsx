@@ -14,7 +14,10 @@ import {
   AnalyticsContainer as PlayersAnalyticsContainer
 } from 'players/containers';
 
-import { ListContainer as GamesListContainer } from 'games/containers';
+import {
+  ListContainer as GamesListContainer,
+  FormTeamsContainer as GamesFormTeamContainer,
+} from 'games/containers';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -32,7 +35,8 @@ const PlayerStack = () => (
           cardStyleInterpolator: CardStyleInterpolators
             .forModalPresentationIOS,
         }
-        : {}}
+        : {}
+      }
     />
     <Stack.Screen
       name="players-edit"
@@ -64,6 +68,18 @@ const PlayerStack = () => (
 const GamesStack = () => (
   <Stack.Navigator initialRouteName="games-list" headerMode="none">
     <Stack.Screen name="games-list" component={GamesListContainer} />
+    <Stack.Screen
+      name="games-form-teams"
+      component={GamesFormTeamContainer}
+      options={Platform.OS === 'ios'
+        ? {
+          gestureEnabled: true,
+          cardStyleInterpolator: CardStyleInterpolators
+            .forModalPresentationIOS,
+        }
+        : {}
+      }
+    />
   </Stack.Navigator>
 );
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { FormScreen } from 'players/screens';
 
 import { useNavigation } from '@react-navigation/native';
-import { PlayerForm, PlayerProps } from 'players/types';
+import { PlayerForm } from 'players/types';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-native-uuid';
 
