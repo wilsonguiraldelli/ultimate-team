@@ -8,7 +8,6 @@ import { selectCurrentSaturday } from 'saturday/hooks';
 import { updatePlayers } from 'saturday/store/actions';
 import { form } from 'players/store/actions';
 import { PlayerProps } from 'players/types';
-import { useEffect } from 'react';
 
 function ListContainer(): React.ReactElement {
   const navigation = useNavigation();

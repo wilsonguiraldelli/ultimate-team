@@ -5,6 +5,10 @@ export function getStyles() {
     container: {
       backgroundColor: '#FFF',
       flex: 1,
+    },
+
+    content: {
+      padding: 16,
     }
   });
 }
